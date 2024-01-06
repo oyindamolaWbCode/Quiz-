@@ -1,1 +1,77 @@
 @import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@200&family=Josefin+Sans:ital@1&family=Montserrat:ital,wght@0,100;0,600;1,200&family=Overpass:wght@300&family=Poppins:wght@300&family=Roboto:ital,wght@0,300;0,500;1,100&display=swap");
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    width: 100%;
+}
+
+.login-container{
+    padding: 50px 100px;
+}
+
+.login-contain{
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-details{
+    width: 55%;
+    padding-top: 100px;
+}
+
+.login-img{
+    width: 40%;
+}
+
+.navhead{
+    font-family: 'poppins';
+}
+
+.wellLogin{
+    font-family: 'poppins';
+    font-size: 50px;
+    color: #007DFE;
+    margin-bottom: 10px;
+}
+
+p{
+ font-family: 'poppins';
+ font-size: 16px;
+ margin: 10px 0px;
+}
+
+input[type='text']{
+    width: 98%;
+    height: 40px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #09223b;
+    padding: 0px 6px;
+}
+
+.forgot{
+    color:#007DFE;
+}
+
+.logbtn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#login{
+    background-color: #007DFE;
+    color: white;
+    padding: 12px 60px;
+    outline: none;
+    border:1px solid #007DFE;
+    border-radius: 5px;
+}
+
+.fa-brands{
+    margin-right: 5px;
+}
