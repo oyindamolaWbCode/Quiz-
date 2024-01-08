@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./quiz.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    /> -->
+  </head>
+  <body>
+    <div class="quiz-container">
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="modal-info">
+            
+            <p id="sure">This action can't be reserved.</p>
+            
+            <h4 id="score">Score 10/20</h4>
+          </div>
+        </div>
+      </div>
+      <nav class="navs">
+        <div class="topic">
+          <p class="lesson">Lesson One</p>
+          <h4 class="subject">HTML/CSS</h4>
+        </div>
+        <div class="details">
+          <span> <button id="start">Start Now</button></span>
+          <span
+            ><img src="../img/Riyad Mahrez.jpg" alt="" id="userImage"
+          /></span>
+        </div>
+      </nav>
+      <div class="quiz-contain">
+        <div class="selectors-timer">
+          <div class="buttons">
+            <button id="btn">1</button>
+            <button id="btn">2</button>
+            <button id="btn">3</button>
+            <button id="btn">4</button>
+            <button id="btn">5</button>
+            <button id="btn">6</button>
+            <button id="btn">7</button>
+            <button id="btn">8</button>
+            <button id="btn">9</button>
+            <button id="btn">10</button>
+            <button id="btn">11</button>
+            <button id="btn">12</button>
+            <button id="btn">13</button>
+            <button id="btn">14</button>
+            <button id="btn">15</button>
+            <button id="btn">16</button>
+            <button id="btn">17</button>
+            <button id="btn">18</button>
+            <button id="btn">19</button>
+            <button id="btn">20</button>
+          </div>
+          <div class="timer">
+            <div class="timer">
+              <p id="timer">10 : 45</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="questions-display">
+        <div id="questions">
+          <div class="quest">
+            <p id="question">This is a test question</p>
+            </div>
+            <div id="answers">
+              <input type="radio" name="answer" value="a">  Option A
+              <br />
+              <input type="radio" name="answer" value="b">  Option B
+              <br />
+              <input type="radio" name="answer" value="c">  Option C
+              <br />
+              <input type="radio" name="answer" value="d">  Option D
+            </div>
+            <div class="next">
+              <button id="before">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button id="next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        <div id="submitButton">
+          <button id="subBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+    <script src="./quiz.js"></script>
+  </body>
+</html>

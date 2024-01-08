@@ -11,17 +11,21 @@ img{
 }
 
 .login-container{
-    padding: 50px 100px;
+    padding: 50px 0px  59px 80px;
+   background-color: #007DFE;
+
 }
 
 .login-contain{
+ background-color: #F5F5F5;
     display: flex;
     justify-content: space-between;
 }
 
 .login-details{
     width: 55%;
-    padding-top: 100px;
+    padding-top: 60px;
+    padding-left: 30px;
 }
 
 .login-img{
@@ -46,7 +50,7 @@ p{
 }
 
 input[type='text']{
-    width: 98%;
+    width: 80%;
     height: 40px;
     outline: none;
     border-radius: 5px;
@@ -70,6 +74,7 @@ input[type='text']{
     outline: none;
     border:1px solid #007DFE;
     border-radius: 5px;
+    margin-right: 140px;
 }
 
 .fa-brands{
