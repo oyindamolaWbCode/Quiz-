@@ -11,8 +11,8 @@ img{
 }
 
 .login-container{
-    padding: 50px 0px  59px 80px;
-   background-color: #007DFE;
+    padding: 50px 80px  59px 80px;
+   background-color: white;
 
 }
 
@@ -20,6 +20,8 @@ img{
  background-color: #F5F5F5;
     display: flex;
     justify-content: space-between;
+    box-shadow: 3px 5px 10px gray;
+  
 }
 
 .login-details{
