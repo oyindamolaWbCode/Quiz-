@@ -20,12 +20,11 @@ let before = document.getElementById("before");
 let next = document.getElementById("next");
 let username = document.getElementById("username");
 
-btn.addEventListener("click", () => {
-  modal.style.display = "block";
-});
+const answerArray = Array(20).fill(-1);
 
 span.addEventListener("click", () => {
   modal.style.display = "none";
+  window.location.href = "../login/login.html";
 });
 
 const questionsCatelogue = [
@@ -199,26 +198,38 @@ let T;
 const timing = () => {
   let minS = Math.floor(time / 60);
   let secS = time % 60;
-  time--;
+
   timer.textContent = `${minS} : ${secS}`;
 
-  if(minS == 0 && secS == 0){
-    scoreSum()
+  if (minS === 0 && secS === 0) {
+    clearInterval(T);
+    scoreSum();
+  } else {
+    time--;
   }
 };
- T = setInterval(timing, 1000);
 
-// timing()
+// Assuming btn and modal are properly defined somewhere in your code
+btn.addEventListener("click", () => {
+  clearInterval(T);
+  modal.style.display = "block";
+});
+
+start.addEventListener("click", () => {
+  loadTest();
+  // timing()
+  loadQuestion();
+  T = setInterval(timing, 1000);
+});
 
 const loadTest = () => {
   let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-
   userImage.src = userDetails.image;
   username.textContent = userDetails.name;
   console.log(userDetails);
 };
 
-loadTest();
+// loadTest();
 
 let index = 1;
 
@@ -239,7 +250,10 @@ const pagination = () => {
 pagination();
 
 const loadQuestion = () => {
-  T = setInterval(timing, 1000);
+  showQuestion();
+};
+
+function showQuestion() {
   question.textContent = questionsCatelogue[index].question;
   a_ans.textContent = questionsCatelogue[index].A;
   b_ans.textContent = questionsCatelogue[index].B;
@@ -249,115 +263,100 @@ const loadQuestion = () => {
   radioB.value = questionsCatelogue[index].B;
   radioC.value = questionsCatelogue[index].C;
   radioD.value = questionsCatelogue[index].D;
-};
-loadQuestion();
+}
+
+function setIndexTo(newIndex) {
+  index = newIndex;
+  showQuestion();
+  pagination();
+}
 
 before.addEventListener("click", () => {
   if (index == 1) {
     before.setAttribute("disabled", true);
   } else {
-    index -= 1;
-    question.textContent = questionsCatelogue[index].question;
-    a_ans.textContent = questionsCatelogue[index].A;
-    b_ans.textContent = questionsCatelogue[index].B;
-    c_ans.textContent = questionsCatelogue[index].C;
-    d_ans.textContent = questionsCatelogue[index].D;
-    radioA.value = questionsCatelogue[index].A;
-    radioB.value = questionsCatelogue[index].B;
-    radioC.value = questionsCatelogue[index].C;
-    radioD.value = questionsCatelogue[index].D;
-
-    pagination();
+    setIndexTo(index - 1);
   }
 });
 
 next.addEventListener("click", () => {
-  index += 1;
-  question.textContent = questionsCatelogue[index].question;
-  a_ans.textContent = questionsCatelogue[index].A;
-  b_ans.textContent = questionsCatelogue[index].B;
-  c_ans.textContent = questionsCatelogue[index].C;
-  d_ans.textContent = questionsCatelogue[index].D;
-  radioA.value = questionsCatelogue[index].A;
-  radioB.value = questionsCatelogue[index].B;
-  radioC.value = questionsCatelogue[index].C;
-  radioD.value = questionsCatelogue[index].D;
-  pagination();
+  if (index == questionsCatelogue.length - 1) {
+    next.setAttribute("disabled", true);
+  } else {
+    setIndexTo(index + 1);
+  }
 });
 
-const scores = []
+const scores = [];
 
-radioA.addEventListener('click', (e)=>{
+radioA.addEventListener("click", (e) => {
   console.log(radioA.value);
-  console.log(questionsCatelogue[index].answer)
-  if(radioA.value === questionsCatelogue[index].answer){
+  console.log(questionsCatelogue[index].answer);
+  if (radioA.value === questionsCatelogue[index].answer) {
     // let newScore = new Set(scores.map(score => score.index))
-    let score = {index: index, score: 1}
-    let repeatedQuest = new Set(scores.map(score => score.index))
-    if(!repeatedQuest.has(score.index)){
-      
-      scores.push(score)
+    let score = { index: index, score: 1 };
+    let repeatedQuest = new Set(scores.map((score) => score.index));
+    if (!repeatedQuest.has(score.index)) {
+      scores.push(score);
     }
-  }else{
+  } else {
     // scores.push({index: index, score: 0})
   }
-  console.log(scores)
-})
+});
 
-radioB.addEventListener('click', (e)=>{
+radioB.addEventListener("click", (e) => {
   console.log(radioB.value);
-  console.log(questionsCatelogue[index].answer)
-  if(radioB.value === questionsCatelogue[index].answer){
+  console.log(questionsCatelogue[index].answer);
+  if (radioB.value === questionsCatelogue[index].answer) {
     // let newScore = new Set(scores.map(score => score.index))
-    let score = {index: index, score: 1}
-    let repeatedQuest = new Set(scores.map(score => score.index))
-    if(!repeatedQuest.has(score.index)){
-      
-      scores.push(score)
+    let score = { index: index, score: 1 };
+    let repeatedQuest = new Set(scores.map((score) => score.index));
+    if (!repeatedQuest.has(score.index)) {
+      scores.push(score);
     }
-  }else{
+  } else {
     // scores.push({index: index, score: 0})
   }
-  console.log(scores)
-})
-radioC.addEventListener('click', (e)=>{
+});
+
+radioC.addEventListener("click", (e) => {
   console.log(radioC.value);
-  console.log(questionsCatelogue[index].answer)
-  if(radioC.value === questionsCatelogue[index].answer){
+  console.log(questionsCatelogue[index].answer);
+  if (radioC.value === questionsCatelogue[index].answer) {
     // let newScore = new Set(scores.map(score => score.index))
-    let score = {index: index, score: 1}
-    let repeatedQuest = new Set(scores.map(score => score.index))
-    if(!repeatedQuest.has(score.index)){
-      
-      scores.push(score)
+    let score = { index: index, score: 1 };
+    let repeatedQuest = new Set(scores.map((score) => score.index));
+    if (!repeatedQuest.has(score.index)) {
+      scores.push(score);
     }
-  }else{
+  } else {
     // scores.push({index: index, score: 0})
   }
-  console.log(scores)
-})
-radioD.addEventListener('click', (e)=>{
+  console.log(scores);
+});
+
+radioD.addEventListener("click", (e) => {
   console.log(radioD.value);
-  console.log(questionsCatelogue[index].answer)
-  if(radioD.value === questionsCatelogue[index].answer){
+  console.log(questionsCatelogue[index].answer);
+  if (radioD.value === questionsCatelogue[index].answer) {
     // let newScore = new Set(scores.map(score => score.index))
-    let score = {index: index, score: 1}
-    let repeatedQuest = new Set(scores.map(score => score.index))
-    if(!repeatedQuest.has(score.index)){
-      
-      scores.push(score)
+    let score = { index: index, score: 1 };
+    let repeatedQuest = new Set(scores.map((score) => score.index));
+    if (!repeatedQuest.has(score.index)) {
+      scores.push(score);
     }
-  }else{
+  } else {
     // scores.push({index: index, score: 0})
   }
-  console.log(scores)
-})
+  console.log(scores);
+});
 
-const scoreSum = () =>{
-  clearInterval(T)
-  let totalScore = scores.map((score) => score.score).reduce((a, b) => a + b, 0)
-console.log(totalScore)
-score.textContent = `${totalScore} / ${questionsCatelogue.length - 1}`
-modal.style.display = "block";
-
-}
+const scoreSum = () => {
+  clearInterval(T);
+  let totalScore = scores
+    .map((score) => score.score)
+    .reduce((a, b) => a + b, 0);
+  console.log(totalScore);
+  score.textContent = `${totalScore} / ${questionsCatelogue.length - 1}`;
+  modal.style.display = "block";
+};

@@ -42,6 +42,12 @@ img {
 .details {
   margin-right: 10px;
   padding: 0px 40px;
+  display: flex;
+}
+
+#username{
+  margin-top: 25px;
+  margin-right: 8px;
 }
 
 #start {
@@ -51,6 +57,7 @@ img {
   color: white;
   background-color: black;
   border-radius: 5px;
+  margin-left: 9px;
 }
 
 .quiz-contain {
